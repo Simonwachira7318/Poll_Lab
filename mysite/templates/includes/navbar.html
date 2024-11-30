@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-sm navbar-dark" style="background: linear-gradient(135deg, #10e0eb 0%, #2575fc 100%);">
+    <div class="container">
+        <a class="navbar-brand" href="">
+            <i class="fas fa-book-reader text-white"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fas fa-home mr-2"></i>Home 
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'polls:quiz' %}">
+                        <i class="fas fa-poll mr-2"></i>Polls
+                    </a>
+                </li>
+            </ul>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="/admin/">
+                    <i class="fas fa-user-shield mr-2"></i>Admin
+                </a>
+                {% if request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'accounts:logout' %}">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </a>
+                {% else %}
+                <a class="nav-link" href="{% url 'accounts:login' %}">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<style>
+.navbar {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link {
+    color: rgba(255,255,255,0.8) !important;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-link:hover {
+    color: white !important;
+    transform: scale(1.05);
+}
+
+.navbar .nav-link i {
+    margin-right: 8px;
+}
+</style>
